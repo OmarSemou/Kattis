@@ -1,30 +1,30 @@
 package Buka;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Buka {
+    // Using BigInteger since int is too small for 100 digits 
     Scanner scanner;
-    int a;
+    BigInteger a;
     String operation;
-    int b;
+    BigInteger b;
 
-    public int calculate() {
+    public BigInteger calculate() {
         scanner = new Scanner(System.in);
-        a = scanner.nextInt();
-
-        // Swallow extra line when pressing enter
-        scanner.nextLine();
-        
+        a = new BigInteger(scanner.nextLine());
         operation = scanner.nextLine();
-        b = scanner.nextInt();
+        b = new BigInteger(scanner.nextLine());
+
+        scanner.close();
 
         if (operation.equals("*")) {
-            return a * b;
+            return a.multiply(b);
         } else if (operation.equals("+")) {
-            return a + b;
+            return a.add(b);
         }
         // Only when operations is neither + or *
-        return 0;
+        return BigInteger.ZERO;
     }
 
     public static void main(String[] args) {
